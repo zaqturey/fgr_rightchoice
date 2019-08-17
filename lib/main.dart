@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,33 +28,43 @@ class _MyAppState extends State<MyApp>{
   @override
   Widget build(BuildContext context) {
 
-    // List of Strings(Questions)
+    // List of MAP<String, Object>
     var questions = [
-      'What\'s your favorite color?',
-      'What\'s your favorite animal?',
-      'What\'s your favorite dish?'
+      {
+        'questionText' : 'What\'s your favorite color?',
+        'answers' : ['White', 'Pink', 'Blue', 'Black']
+      },
+      {
+        'questionText' : 'What\'s your favorite animal?',
+        'answers' : ['Lion', 'Owl', 'Swan', 'Monkey', 'Cow']
+      },
+      {
+        'questionText' : 'What\'s your favorite dish?',
+        'answers' : ['Malai Kofta', 'Dal Makhani', 'Dum Aloo']
+      }
     ];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Right Choice'),
+          title: Text('Min Kul Appen'),
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            RaisedButton(
-              child: Text('Option 1'),
-              onPressed: _answerQuestion,
+            // Accessing the MAP Item based on the index i.e. '_questionIndex'
+            // and then fetching the VALUE based on the KEY in that item.
+            Question(
+              questions[_questionIndex]['questionText'],
             ),
-            RaisedButton(
-              child: Text('Option 2'),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text('Option 3'),
-              onPressed: _answerQuestion,
-            ),
+
+            // Accessing a MAP element from 'questions' LIST based on '_questionIndex'
+            // and than Accessing the 'List of Values' based on the 'answers' KEY in that MAP
+            // So we  will get this list i.e. --> questions[_questionIndex]['answers']
+            // Note: Using spread operator (...), we will append all the elements produced by
+            // 'toList()' method below to the 'Children:' list above.
+            ...(questions[_questionIndex]['answers'] as List<String>).map((answerelement) {
+              return Answer(_answerQuestion, answerelement);
+            }).toList()
           ],
         ),
       ),
