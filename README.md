@@ -17,6 +17,14 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added a new 'question.dart' file that Implemented a custom widget, and in 'main.dart' replaced 'Text' widget with 'Question' widget
+- question.dart >> added a new file that provides implementation for a Custom Text widget
+- question.dart >> "Question constructor" accepts a String and using that String, "Question class" returns a Custom widget.
+- main.dart >> Replaced default Flutter Widget i.e. ‘Text Widget’ with a Custom Widget i.e. "Question" widget
+
+
+
+
 >> Implemented '_answerQuestion', setState, 'MaterialApp' widget that implements an 'appBar' and 'body'
 - main.dart >> Implemented a void function i.e. '_answerQuestion' that performs 'setState()' which is an inbuilt function.
 - main.dart >> 'setState()' function increments the value of '_questionIndex'
