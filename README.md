@@ -17,6 +17,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented a 'ternary operator', that implements a Columns or a Center widget as body of 'Scaffold', depending on the value of '_questionIndex'
+- main.dart >> Scope change --> moved 'questions' List from the 'build' Widget to directly under '_MyAppState' class, so it can accessed throughout the class.
+- main.dart >> Made 'questions' as final (meaning once assigned, values of the List can't be changed at RunTime)
+- main.dart >> For 'questions' List, Added 'const' before the List initialization, meaning value can't be change during compile time and eventually at runtime.
+- main.dart >> Refactored 'main.dart' to use '_questions' instead of 'questions' 
+- main.dart >> updated implementation of 'body' widget to choose which widget to implement depending upon the putpu of the Ternary Operator.
+- main.dart >> Added 'Center' widget to be returned as body widget if output of "_questionIndex < questions.length" is FALSE
+- main.dart >> Updated implementation of '_answerQuestion'
+
 >> Added 'question.dart' that implements 'Answer'(as a Custom Widget), Implemented 'CallBack' and 'Future', List<Map<String, Object>> and Spread Operator i.e. (...)
 - main.dart >> Replaced inbuilt 'RaisedButton' widget with 'Answer' Widget i.e. Added new 'answer.dart' file.
 - main.dart >> Implemented '_answerQuestion' as Callback for Answer widget i.e. Answer(_answerQuestion)

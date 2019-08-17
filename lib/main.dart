@@ -15,47 +15,48 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp>{
   var _questionIndex = 0;
 
+  // List of MAP<String, Object>
+  final questions = const[
+    {
+      'questionText' : 'What\'s your favorite color?',
+      'answers' : ['White', 'Pink', 'Blue', 'Black']
+    },
+    {
+      'questionText' : 'What\'s your favorite animal?',
+      'answers' : ['Lion', 'Owl', 'Swan', 'Monkey', 'Cow']
+    },
+    {
+      'questionText' : 'What\'s your favorite dish?',
+      'answers' : ['Malai Kofta', 'Dal Makhani', 'Dum Aloo']
+    }
+  ];
+
   void _answerQuestion() {
     setState(() {
-      if(_questionIndex == 2){
-        _questionIndex = -1;
-      }
       _questionIndex = _questionIndex + 1;
     });
-    print(_questionIndex);
+    print("Current value of _questionIndex is: $_questionIndex");
+    if(_questionIndex < questions.length ) {
+      print("We have more questions!");
+    } else {
+      print("No more questions!");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-
-    // List of MAP<String, Object>
-    var questions = [
-      {
-        'questionText' : 'What\'s your favorite color?',
-        'answers' : ['White', 'Pink', 'Blue', 'Black']
-      },
-      {
-        'questionText' : 'What\'s your favorite animal?',
-        'answers' : ['Lion', 'Owl', 'Swan', 'Monkey', 'Cow']
-      },
-      {
-        'questionText' : 'What\'s your favorite dish?',
-        'answers' : ['Malai Kofta', 'Dal Makhani', 'Dum Aloo']
-      }
-    ];
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Min Kul Appen'),
+          title: Text('Right Choice'),
         ),
-        body: Column(
+
+        // Adding a Ternary Operator that will depend on 'questions.length'
+        body: _questionIndex < questions.length ? Column(
           children: [
             // Accessing the MAP Item based on the index i.e. '_questionIndex'
             // and then fetching the VALUE based on the KEY in that item.
-            Question(
-              questions[_questionIndex]['questionText'],
-            ),
+            Question(questions[_questionIndex]['questionText'],),
 
             // Accessing a MAP element from 'questions' LIST based on '_questionIndex'
             // and than Accessing the 'List of Values' based on the 'answers' KEY in that MAP
@@ -66,6 +67,8 @@ class _MyAppState extends State<MyApp>{
               return Answer(_answerQuestion, answerelement);
             }).toList()
           ],
+        ) : Center(
+          child: Text("You are done!"),
         ),
       ),
     );
