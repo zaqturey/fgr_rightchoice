@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-// Question class accepts a 'String' argument and returns a
-// Custom Widget i.e. Question
+// Question class returns a Container Widget
 class Question extends StatelessWidget {
-
   final String questionText;
 
-  // Implementing a positional constructor
+  // Question class Constructor accepts a 'String' argument
   Question(this.questionText);
 
   @override

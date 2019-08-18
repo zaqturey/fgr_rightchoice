@@ -17,6 +17,12 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Refactored 'main.dart', added 'quiz.dart' and 'result.dart' to implement ternary outputs as modularized widgets
+- main.dart >> Refactored 'body' widget implementation i.e. to use Quiz() and Result() Widgets instead of Column() and Center() Widgets
+- main.dart >> Refactored 'questions' List i.e. made it private to the class i.e. changed it to '_questions'
+- quiz.dart >> A new file that return a Column widget that holds a 'Children' widget that eventually holds 'Question' and List of 'Answer' Widgets.
+- result.dart >> A new file that return a Center widget that holds a 'Child' widget that eventually holds a Text widget. 
+
 >> Implemented a 'ternary operator', that implements a Columns or a Center widget as body of 'Scaffold', depending on the value of '_questionIndex'
 - main.dart >> Scope change --> moved 'questions' List from the 'build' Widget to directly under '_MyAppState' class, so it can accessed throughout the class.
 - main.dart >> Made 'questions' as final (meaning once assigned, values of the List can't be changed at RunTime)
