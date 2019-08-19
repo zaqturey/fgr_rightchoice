@@ -17,6 +17,20 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Refactored main.dart, quiz.dart and result.dart to implement score calculation and displaying the final result accordingly
+- main.dart >> Converted '_questions' List i.e. changed 'answers List<String>' to 'answers List<Map<String, Object>>' 
+- main.dart >> 'answers List<Map<String, Object>>' now has two keys i.e. 'text' and 'score' and their associated values.
+- quiz.dart >> Refactored 'Question' widget to accept 'List<Map<String, Object>>' instead of 'List<String>'
+- quiz.dart >> Refactored implementation of  anonymous function inside Map i.e. 
+1. Now we pass 'answer['text']' (which is a Map 'key' of 'answers' List) as parameter instead 'answer' (that was a plain String) to the Answer Widget.
+2. Also instead of passing a Callback i.e. 'answerQuestion', we pass an anonymous function/Callback, which that also accepts a Parameter i.e. 'answerQuestion(answer[score])' and gets executed  whenever 'onPressed' is called.   
+- main.dart >> Added a new private variable i.e. '_totalScore' to keep track of the final score.
+- main.dart >> Refactored '_answerQuestion' method to accept 'int score' as an argument and update the '_totalScore' accordingly.
+- main.dart >> Passing the '_totalScore' to the 'Result' widget.
+- result.dart >> Added a constructor that accpets an int i.e. 'resultScore'. 
+- result.dart >> Added a getter i.e. 'resultPhrase' that returns a String based on the value of 'resultScore'
+- result.dart >> Updated the implementation of the 'Center' widget to display the Text based on the value of 'resultPhrase' getter.
+
 >> Refactored 'main.dart', added 'quiz.dart' and 'result.dart' to implement ternary outputs as modularized widgets
 - main.dart >> Refactored 'body' widget implementation i.e. to use Quiz() and Result() Widgets instead of Column() and Center() Widgets
 - main.dart >> Refactored 'questions' List i.e. made it private to the class i.e. changed it to '_questions'

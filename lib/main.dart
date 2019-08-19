@@ -14,24 +14,48 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
+  var _totalScore = 0;
+
   // List of MAP<String, Object>
   final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['White', 'Pink', 'Blue', 'Black']
+      // Changed answers as 'List<String>' to 'List<Map<String, Objects>>'
+      'answers': [
+        {'text' : 'White', 'score' : 8},
+        {'text' : 'Pink', 'score' : 10},
+        {'text' : 'Blue', 'score' : 5},
+        {'text' : 'Black', 'score' : 2},
+      ]
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Lion', 'Owl', 'Swan', 'Monkey', 'Cow']
+      'answers': [
+        {'text' : 'Lion', 'score' : 7 },
+        {'text' : 'Owl', 'score' : 8 },
+        {'text' : 'Swan', 'score' : 9 },
+        {'text' : 'Monkey', 'score' : 9 },
+        {'text' : 'Cow', 'score' : 10 },
+      ]
     },
     {
       'questionText': 'What\'s your favorite dish?',
-      'answers': ['Malai Kofta', 'Dal Makhani', 'Dum Aloo']
+      'answers': [
+        {'text' : 'Malai Kofta', 'score' : 10 },
+        {'text' : 'Dal Makhani', 'score' : 8 },
+        {'text' : 'Dum Aloo', 'score' : 7 },
+      ]
     }
   ];
 
   // '_answerQuestion' calls the 'setState()' function which in-turn increment the '_questionIndex' by 1.
-  void _answerQuestion() {
+  // it also accepts 'score' as an argument and update the value of '_totalScore' accordingly
+  void _answerQuestion(int score) {
+
+    // Updating the value of '_totalScore' with the 'score' each time '_answerQuestion' is called
+    _totalScore += score;
+    print(_totalScore);
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -58,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion,
               )
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }

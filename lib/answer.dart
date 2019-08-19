@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Quiz class returns a Container Widget
 class Answer extends StatelessWidget {
 
   // Declaring a Property i.e. selectHandler

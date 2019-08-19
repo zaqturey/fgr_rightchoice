@@ -29,12 +29,14 @@ class Quiz extends StatelessWidget {
           questions[questionIndex]['questionText'],
         ),
 
-        // questions[questionIndex]['answers'] => will return a 'List of Strings' associated with 'answers' KEY
-        // .Map method will iterate through each item of that list.
+        // questions[questionIndex]['answers'] => will return a 'List of Map' associated with 'answers' KEY
+        // .Map method will iterate through each Map item of above 'answers' list.
         // Note: Using spread operator (...), we will append all the elements produced by
         // 'toList()' method below to the immediate List.
-        ...(questions[questionIndex]['answers'] as List<String>).map((answerelement) {
-          return Answer(answerQuestion, answerelement);
+        // Also Callback "() => answerQuestion(answer['score'])" in the Answer function will be executed on 'onPressed'
+        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
+//          return Answer(answerQuestion, answer['text']);
+          return Answer(() => answerQuestion(answer['score']), answer['text']);
         }).toList()
       ],
     );
