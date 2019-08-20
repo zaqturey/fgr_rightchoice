@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 // Quiz class returns a Center Widget
 class Result extends StatelessWidget {
   final int resultScore;
+  final Function resetHandler;
 
-  Result(this.resultScore);
+  Result(this.resultScore, this.resetHandler);
 
   // Below getter method return the Text to be displayed based on the 'resultScore'
   String get resultPhrase{
@@ -25,8 +26,19 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-          resultPhrase
+      child: Column(
+        children: <Widget>[
+          Text(
+            resultPhrase,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          FlatButton(
+            child: Text("Reset Quiz"),
+            textColor: Colors.blue,
+            onPressed: resetHandler,
+          ),
+        ],
       ),
     );
   }

@@ -17,6 +17,13 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented Reset Quiz functionality
+- main.dart >> Added '_resetQuiz()' that calls the 'steState()' function and hence re-draw the 'Quiz' widget as per the new values 
+- main.dart >> Added '_resetQuiz' as a Callback parameter to the 'Result' Widget
+- result.dart >> Added a new Function parameter i.e. 'resetHandler' and 'ResetQuiz' constructor to accept the '_resetQuiz' callback  
+- result.dart >> In order to add a 'Reset Quiz' button, Wrapped Text Widget into a Column Widget.
+- result.dart >> Added a 'FlatButton' that calls 'resetHandler' for its 'onPressed' property.
+
 >> Refactored main.dart, quiz.dart and result.dart to implement score calculation and displaying the final result accordingly
 - main.dart >> Converted '_questions' List i.e. changed 'answers List<String>' to 'answers List<Map<String, Object>>' 
 - main.dart >> 'answers List<Map<String, Object>>' now has two keys i.e. 'text' and 'score' and their associated values.
